@@ -23,11 +23,27 @@
             font-size: 3em;
         }
 
-        /* Carrusel estilo Just Dance (Selección de canciones) */
+        /* Imagen Animada (Reemplaza a los emojis) */
+        .animated-background {
+            margin: 20px auto;
+            width: 90%;
+            max-width: 600px;
+            border-radius: 20px;
+            border: 5px solid #fff;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+
+        .animated-background img {
+            width: 100%;
+            display: block;
+        }
+
+        /* Carrusel estilo Just Dance */
         .catalog-container {
             margin: 30px auto;
             width: 90%;
-            background: rgba(255, 255, 255, 0.5);
+            background: rgba(255, 255, 255, 0.6);
             border-radius: 20px;
             padding: 20px;
             box-shadow: 0 8px 15px rgba(0,0,0,0.1);
@@ -71,14 +87,16 @@
             border-color: #AEC6CF;
         }
 
-        /* Reproductor de Audio */
-        #audio-player {
-            width: 80%;
-            margin: 20px 0;
-            outline: none;
+        /* Reproductor de YouTube */
+        .youtube-container {
+            margin-top: 20px;
+            display: none; /* Se oculta hasta que se elige una canción */
+            border-radius: 15px;
+            overflow: hidden;
+            border: 4px solid #FFD1DC;
         }
 
-        /* Sección de Orion y el Acertijo */
+        /* Sección de Orion */
         .orion-section {
             background: white;
             width: 80%;
@@ -127,7 +145,6 @@
             background-color: #FFD1DC;
         }
 
-        /* Carta Oculta en Binario */
         #hidden-letter {
             display: none;
             margin-top: 30px;
@@ -139,40 +156,38 @@
             font-size: 14px;
             word-wrap: break-word;
         }
-
-        .landscape {
-            font-size: 40px;
-            margin-bottom: 20px;
-        }
     </style>
 </head>
 <body>
 
     <h1>✨ ¡Feliz Primer Mes! ✨</h1>
-    <div class="landscape">🌸 🏞️ 🦋 🌌</div>
+    
+    <!-- AQUÍ PONES EL ENLACE DE TU GIF O VIDEO -->
+    <div class="animated-background">
+        <img src="https://media.giphy.com/media/3o7TKoWXm3okO1kgHC/giphy.gif" alt="Paisaje Animado">
+    </div>
 
     <div class="catalog-container">
         <h2>🎶 Tu Catálogo Musical 🎶</h2>
-        <p>Desliza para elegir nuestra canción (Estilo Just Dance 😉)</p>
+        <p>Desliza para elegir nuestra canción 😉</p>
         
         <div class="carousel">
-            <!-- NOTA PARA TI: Para que suenen, debes cambiar el 'src' por enlaces reales de mp3 o simplemente dejarlo así por ahora y que ella imagine la magia mientras juegan -->
-            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">Canción 1<br>🎵</div>
-            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">Canción 2<br>🎵</div>
-            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">Canción 3<br>🎵</div>
-            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3')">Canción 4<br>🎵</div>
-            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3')">Canción 5<br>🎵</div>
+            <!-- Solo pon el ID de YouTube entre las comillas simples de playSong('') -->
+            <div class="song-card" onclick="playSound(); playSong('dQw4w9WgXcQ')">Nuestra Canción 1<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('Otra_ID_Aqui')">Nuestra Canción 2<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('Otra_ID_Aqui')">Nuestra Canción 3<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('Otra_ID_Aqui')">Nuestra Canción 4<br>🎵</div>
         </div>
 
-        <!-- Reproductor nativo para adelantar o pausar -->
-        <audio id="audio-player" controls>
-            Tu navegador no soporta el audio.
-        </audio>
+        <!-- Este es el reproductor de YouTube que aparecerá mágicamente -->
+        <div class="youtube-container" id="yt-container">
+            <iframe id="youtube-player" width="100%" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+        </div>
     </div>
 
     <div class="orion-section">
         <div class="orion-avatar">🤖✨</div>
-        <h3>¡Hola! Soy Orion </h3>
+        <h3>¡Hola! Soy Orion</h3>
         <p>He escondido una carta muy especial para ti. Para revelarla, debes resolver este acertijo:</p>
         <p><strong>"No tiene ojos pero puede llorar, no tiene alas pero puede volar... y late muy fuerte cuando te veo llegar. ¿Qué es?"</strong></p>
         
@@ -185,34 +200,34 @@
             <p style="color: #AEC6CF;">
                 01010100 01100101 00100000 01100001 01101101 01101111 00100000 01101101 01110101 01100011 01101000 01101111 00101110 00100000 01000111 01110010 01100001 01100011 01101001 01100001 01110011 00100000 01110000 01101111 01110010 00100000 01100101 01110011 01110100 01100101 00100000 01101000 01100101 01110010 01101101 01101111 01110011 01101111 00100000 01101101 01100101 01110011 00100000 01101010 01110101 01101110 01110100 01101111 01110011 00101110
             </p>
-            <p><em>(Pista para ella: Usa un traductor de Binario a Texto en internet 😉)</em></p>
         </div>
     </div>
 
-    <!-- Efecto de sonido básico para botones -->
+    <!-- Efecto de sonido del botón -->
     <audio id="sfx" src="https://www.myinstants.com/media/sounds/mario-coin.mp3"></audio>
 
     <script>
-        // Función para cambiar de canción en el reproductor
-        function playSong(src) {
-            const player = document.getElementById('audio-player');
-            player.src = src;
-            player.play();
+        // Función para cargar el video de YouTube
+        function playSong(videoId) {
+            const container = document.getElementById('yt-container');
+            const player = document.getElementById('youtube-player');
+            
+            // Muestra el contenedor del video
+            container.style.display = 'block';
+            // Le agrega el ID del video y hace que se reproduzca solo (autoplay=1)
+            player.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         }
 
-        // Función para el efecto de sonido chulo
         function playSound() {
             const sfx = document.getElementById('sfx');
             sfx.currentTime = 0;
             sfx.play();
         }
 
-        // Función para validar la pista de Orion
         function checkRiddle() {
             playSound();
             const answer = document.getElementById('riddle-answer').value.toLowerCase();
             
-            // La respuesta correcta es "corazon" o "el corazon"
             if(answer.includes('corazon') || answer.includes('corazón') || answer.includes('amor')) {
                 document.getElementById('hidden-letter').style.display = 'block';
                 alert('🤖 Orion dice: ¡Bip bop! ¡Respuesta correcta! Liberando datos...');
