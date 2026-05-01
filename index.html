@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>¡Feliz Primer Mes! 💖</title>
+    <style>
+        /* Tonos Pasteles: Rosa (#FFD1DC) y Azul (#AEC6CF) */
+        body {
+            background: linear-gradient(135deg, #FFD1DC, #AEC6CF);
+            font-family: 'Comic Sans MS', 'Fredoka One', cursive, sans-serif;
+            margin: 0;
+            padding: 0;
+            color: #333;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        h1 {
+            color: #fff;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+            margin-top: 30px;
+            font-size: 3em;
+        }
+
+        /* Carrusel estilo Just Dance (Selección de canciones) */
+        .catalog-container {
+            margin: 30px auto;
+            width: 90%;
+            background: rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .carousel {
+            display: flex;
+            overflow-x: auto;
+            gap: 20px;
+            padding: 20px 10px;
+            scroll-behavior: smooth;
+        }
+
+        .carousel::-webkit-scrollbar {
+            height: 10px;
+        }
+        .carousel::-webkit-scrollbar-thumb {
+            background: #AEC6CF;
+            border-radius: 10px;
+        }
+
+        .song-card {
+            min-width: 150px;
+            height: 150px;
+            background: #fff;
+            border: 4px solid #FFD1DC;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, background 0.3s;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+
+        .song-card:hover {
+            transform: scale(1.1);
+            background: #FFD1DC;
+            color: white;
+            border-color: #AEC6CF;
+        }
+
+        /* Reproductor de Audio */
+        #audio-player {
+            width: 80%;
+            margin: 20px 0;
+            outline: none;
+        }
+
+        /* Sección de Orion y el Acertijo */
+        .orion-section {
+            background: white;
+            width: 80%;
+            margin: 40px auto;
+            padding: 30px;
+            border-radius: 20px;
+            border: 5px dashed #AEC6CF;
+            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+        }
+
+        .orion-avatar {
+            font-size: 50px;
+            margin-bottom: 10px;
+            animation: bounce 2s infinite;
+        }
+
+        @keyframes bounce {
+            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
+            40% {transform: translateY(-20px);}
+            60% {transform: translateY(-10px);}
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border-radius: 10px;
+            border: 2px solid #AEC6CF;
+            font-size: 16px;
+            width: 60%;
+            margin-top: 10px;
+        }
+
+        button {
+            background-color: #AEC6CF;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            font-size: 16px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 10px;
+        }
+
+        button:hover {
+            background-color: #FFD1DC;
+        }
+
+        /* Carta Oculta en Binario */
+        #hidden-letter {
+            display: none;
+            margin-top: 30px;
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            border: 3px solid #FFD1DC;
+            font-family: monospace;
+            font-size: 14px;
+            word-wrap: break-word;
+        }
+
+        .landscape {
+            font-size: 40px;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>✨ ¡Feliz Primer Mes! ✨</h1>
+    <div class="landscape">🌸 🏞️ 🦋 🌌</div>
+
+    <div class="catalog-container">
+        <h2>🎶 Tu Catálogo Musical 🎶</h2>
+        <p>Desliza para elegir nuestra canción (Estilo Just Dance 😉)</p>
+        
+        <div class="carousel">
+            <!-- NOTA PARA TI: Para que suenen, debes cambiar el 'src' por enlaces reales de mp3 o simplemente dejarlo así por ahora y que ella imagine la magia mientras juegan -->
+            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3')">Canción 1<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-2.mp3')">Canción 2<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-3.mp3')">Canción 3<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-4.mp3')">Canción 4<br>🎵</div>
+            <div class="song-card" onclick="playSound(); playSong('https://www.soundhelix.com/examples/mp3/SoundHelix-Song-5.mp3')">Canción 5<br>🎵</div>
+        </div>
+
+        <!-- Reproductor nativo para adelantar o pausar -->
+        <audio id="audio-player" controls>
+            Tu navegador no soporta el audio.
+        </audio>
+    </div>
+
+    <div class="orion-section">
+        <div class="orion-avatar">🤖✨</div>
+        <h3>¡Hola! Soy Orion </h3>
+        <p>He escondido una carta muy especial para ti. Para revelarla, debes resolver este acertijo:</p>
+        <p><strong>"No tiene ojos pero puede llorar, no tiene alas pero puede volar... y late muy fuerte cuando te veo llegar. ¿Qué es?"</strong></p>
+        
+        <input type="text" id="riddle-answer" placeholder="Escribe tu respuesta aquí...">
+        <button onclick="checkRiddle()">Enviar pista a Orion</button>
+
+        <div id="hidden-letter">
+            <h3>¡Acertijo Resuelto! 🎉</h3>
+            <p>Has desbloqueado los fragmentos de la carta en código binario. ¡Tradúcelo para leer mi mensaje!</p>
+            <p style="color: #AEC6CF;">
+                01010100 01100101 00100000 01100001 01101101 01101111 00100000 01101101 01110101 01100011 01101000 01101111 00101110 00100000 01000111 01110010 01100001 01100011 01101001 01100001 01110011 00100000 01110000 01101111 01110010 00100000 01100101 01110011 01110100 01100101 00100000 01101000 01100101 01110010 01101101 01101111 01110011 01101111 00100000 01101101 01100101 01110011 00100000 01101010 01110101 01101110 01110100 01101111 01110011 00101110
+            </p>
+            <p><em>(Pista para ella: Usa un traductor de Binario a Texto en internet 😉)</em></p>
+        </div>
+    </div>
+
+    <!-- Efecto de sonido básico para botones -->
+    <audio id="sfx" src="https://www.myinstants.com/media/sounds/mario-coin.mp3"></audio>
+
+    <script>
+        // Función para cambiar de canción en el reproductor
+        function playSong(src) {
+            const player = document.getElementById('audio-player');
+            player.src = src;
+            player.play();
+        }
+
+        // Función para el efecto de sonido chulo
+        function playSound() {
+            const sfx = document.getElementById('sfx');
+            sfx.currentTime = 0;
+            sfx.play();
+        }
+
+        // Función para validar la pista de Orion
+        function checkRiddle() {
+            playSound();
+            const answer = document.getElementById('riddle-answer').value.toLowerCase();
+            
+            // La respuesta correcta es "corazon" o "el corazon"
+            if(answer.includes('corazon') || answer.includes('corazón') || answer.includes('amor')) {
+                document.getElementById('hidden-letter').style.display = 'block';
+                alert('🤖 Orion dice: ¡Bip bop! ¡Respuesta correcta! Liberando datos...');
+            } else {
+                alert('🤖 Orion dice: ¡Error! Esa no es la respuesta. Pista: Está en tu pecho y late por mí.');
+            }
+        }
+    </script>
+</body>
+</html>
