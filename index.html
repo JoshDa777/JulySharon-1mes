@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>¡Feliz Primer Mes! 💖</title>
+    <title>¡Feliz Primer Mes Juliiii! 💖</title>
     <style>
         /* Tonos Pasteles: Rosa (#FFD1DC) y Azul (#AEC6CF) */
         body {
@@ -23,7 +23,7 @@
             font-size: 3em;
         }
 
-        /* Imagen Animada (Reemplaza a los emojis) */
+        /* Imagen Animada */
         .animated-background {
             margin: 20px auto;
             width: 90%;
@@ -72,6 +72,7 @@
             border: 4px solid #FFD1DC;
             border-radius: 15px;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
             font-weight: bold;
@@ -90,70 +91,113 @@
         /* Reproductor de YouTube */
         .youtube-container {
             margin-top: 20px;
-            display: none; /* Se oculta hasta que se elige una canción */
+            display: none;
             border-radius: 15px;
             overflow: hidden;
             border: 4px solid #FFD1DC;
         }
 
-        /* Sección de Orion */
-        .orion-section {
-            background: white;
-            width: 80%;
+        /* SECCIÓN RPG ORION */
+        .rpg-container {
+            display: flex;
+            align-items: flex-end;
+            justify-content: center;
             margin: 40px auto;
-            padding: 30px;
-            border-radius: 20px;
-            border: 5px dashed #AEC6CF;
-            box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+            width: 90%;
+            max-width: 700px;
+            position: relative;
         }
 
-        .orion-avatar {
-            font-size: 50px;
-            margin-bottom: 10px;
-            animation: bounce 2s infinite;
+        .shimeji-orion {
+            font-size: 70px;
+            margin-right: -20px;
+            z-index: 2;
+            animation: float 3s ease-in-out infinite;
+            filter: drop-shadow(2px 4px 6px rgba(0,0,0,0.3));
         }
 
-        @keyframes bounce {
-            0%, 20%, 50%, 80%, 100% {transform: translateY(0);}
-            40% {transform: translateY(-20px);}
-            60% {transform: translateY(-10px);}
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-15px); }
         }
 
-        input[type="text"] {
+        .dialogue-box {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            border: 5px solid #AEC6CF;
+            border-radius: 15px;
+            padding: 20px 30px;
+            width: 100%;
+            font-family: monospace;
+            font-size: 18px;
+            text-align: left;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+        }
+
+        .dialogue-box p {
+            margin-top: 0;
+            line-height: 1.5;
+        }
+
+        #rpg-input {
+            width: 70%;
             padding: 10px;
-            border-radius: 10px;
-            border: 2px solid #AEC6CF;
+            background: #222;
+            color: #FFD1DC;
+            border: 2px solid #FFD1DC;
+            border-radius: 8px;
+            font-family: monospace;
             font-size: 16px;
-            width: 60%;
+            outline: none;
             margin-top: 10px;
         }
 
-        button {
-            background-color: #AEC6CF;
-            color: white;
+        #rpg-button {
+            background-color: #FFD1DC;
+            color: #333;
             border: none;
             padding: 10px 20px;
             font-size: 16px;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
             font-weight: bold;
+            font-family: monospace;
             transition: 0.3s;
             margin-top: 10px;
         }
 
-        button:hover {
-            background-color: #FFD1DC;
+        #rpg-button:hover {
+            background-color: #AEC6CF;
+            color: white;
         }
 
-        #hidden-letter {
-            display: none;
-            margin-top: 30px;
-            background: #f8f9fa;
-            padding: 20px;
+        /* INVENTARIO BINARIO */
+        .inventory {
+            background: rgba(255, 255, 255, 0.8);
+            margin: 20px auto;
+            width: 80%;
+            max-width: 600px;
             border-radius: 15px;
-            border: 3px solid #FFD1DC;
+            border: 3px dashed #FFD1DC;
+            padding: 20px;
+            display: none;
+        }
+
+        .inventory h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .binary-part {
+            background: #eee;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 5px 0;
             font-family: monospace;
-            font-size: 14px;
+            color: #000;
+            letter-spacing: 2px;
+            opacity: 0;
+            transition: opacity 1s;
             word-wrap: break-word;
         }
     </style>
@@ -162,7 +206,6 @@
 
     <h1>✨ ¡Feliz Primer Mes! ✨</h1>
     
-    <!-- AQUÍ PONES EL ENLACE DE TU GIF O VIDEO -->
     <div class="animated-background">
         <img src="https://cdn.wallpapersafari.com/75/96/IDYP5E.gif" alt="Paisaje Animado">
     </div>
@@ -172,7 +215,6 @@
         <p>Desliza para elegir nuestra canción 😉</p>
         
         <div class="carousel">
-            <!-- Solo pon el ID de YouTube entre las comillas simples de playSong('') -->
             <div class="song-card" onclick="playSound(); playSong('kPa7bsKwL-c')">Die with a smile<br>🎵</div>
             <div class="song-card" onclick="playSound(); playSong('GDND88fqt1o')">Those eyes<br>🎵</div>
             <div class="song-card" onclick="playSound(); playSong('GxldQ9eX2wo')">Until i found you<br>🎵</div>
@@ -207,45 +249,41 @@
             <div class="song-card" onclick="playSound(); playSong('q7mlB-adMBc')">Yellow<br>🎵</div>
             <div class="song-card" onclick="playSound(); playSong('rfTgO9rpqck')">Heat waves<br>🎵</div>
             <div class="song-card" onclick="playSound(); playSong('ByiOOe6XuvM')">Line without a hook<br>🎵</div>
-
         </div>
 
-        <!-- Este es el reproductor de YouTube que aparecerá mágicamente -->
         <div class="youtube-container" id="yt-container">
             <iframe id="youtube-player" width="100%" height="315" src="" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
         </div>
     </div>
 
-    <div class="orion-section">
-        <div class="orion-avatar">🤖✨</div>
-        <h3>¡Hola! Soy Orion</h3>
-        <p>He escondido una carta muy especial para ti. Para revelarla, debes resolver este acertijo:</p>
-        <p><strong>"No tiene ojos pero puede llorar, no tiene alas pero puede volar... y late muy fuerte cuando te veo llegar. ¿Qué es?"</strong></p>
+    <!-- SECCIÓN INTERACTIVA RPG DE ORION -->
+    <div class="rpg-container">
+        <div class="shimeji-orion">🤖</div>
         
-        <input type="text" id="riddle-answer" placeholder="Escribe tu respuesta aquí...">
-        <button onclick="checkRiddle()">Enviar pista a Orion</button>
-
-        <div id="hidden-letter">
-            <h3>¡Acertijo Resuelto! 🎉</h3>
-            <p>Has desbloqueado los fragmentos de la carta en código binario. ¡Tradúcelo para leer mi mensaje!</p>
-            <p style="color: #AEC6CF;">
-                01010100 01100101 00100000 01100001 01101101 01101111 00100000 01101101 01110101 01100011 01101000 01101111 00101110 00100000 01000111 01110010 01100001 01100011 01101001 01100001 01110011 00100000 01110000 01101111 01110010 00100000 01100101 01110011 01110100 01100101 00100000 01101000 01100101 01110010 01101101 01101111 01110011 01101111 00100000 01101101 01100101 01110011 00100000 01101010 01110101 01101110 01110100 01101111 01110011 00101110
-            </p>
+        <div class="dialogue-box">
+            <p id="orion-text">Iniciando sistema... ¡Hola Julieth! Soy la IA Orion. Tengo una misión secreta para ti. ¿Estás lista para jugar? (Escribe 'si')</p>
+            <input type="text" id="rpg-input" autocomplete="off" placeholder="Escribe aquí...">
+            <button id="rpg-button" onclick="avanzarDialogo()">Enviar</button>
         </div>
+    </div>
+
+    <!-- INVENTARIO DONDE SE GUARDARÁ LA CARTA -->
+    <div class="inventory" id="inventory-box">
+        <h3>📂 Datos Desbloqueados de la Carta</h3>
+        <p>Junta todas las partes y usa un traductor de Binario a Texto en internet.</p>
+        <div class="binary-part" id="bin-1">Parte 1:<br>01010100 01100101 00100000 01100001 01101101 01101111 00100000 01101101 01110101 01100011 01101000 01101111 00101110</div>
+        <div class="binary-part" id="bin-2">Parte 2:<br>00100000 01000111 01110010 01100001 01100011 01101001 01100001 01110011 00100000 01110000 01101111 01110010</div>
+        <div class="binary-part" id="bin-3">Parte 3:<br>00100000 01100101 01110011 01110100 01100101 00100000 01101000 01100101 01110010 01101101 01101111 01110011 01101111 00100000 01101101 01100101 01110011 00100000 01101010 01110101 01101110 01110100 01101111 01110011 00101110</div>
     </div>
 
     <!-- Efecto de sonido del botón -->
     <audio id="sfx" src="https://www.myinstants.com/media/sounds/mario-coin.mp3"></audio>
 
     <script>
-        // Función para cargar el video de YouTube
         function playSong(videoId) {
             const container = document.getElementById('yt-container');
             const player = document.getElementById('youtube-player');
-            
-            // Muestra el contenedor del video
             container.style.display = 'block';
-            // Le agrega el ID del video y hace que se reproduzca solo (autoplay=1)
             player.src = 'https://www.youtube.com/embed/' + videoId + '?autoplay=1';
         }
 
@@ -255,15 +293,55 @@
             sfx.play();
         }
 
-        function checkRiddle() {
+        // LÓGICA DE LA IA ORION (JUEGO RPG)
+        let etapa = 0;
+
+        function avanzarDialogo() {
             playSound();
-            const answer = document.getElementById('riddle-answer').value.toLowerCase();
-            
-            if(answer.includes('corazon') || answer.includes('corazón') || answer.includes('amor')) {
-                document.getElementById('hidden-letter').style.display = 'block';
-                alert('🤖 Orion dice: ¡Bip bop! ¡Respuesta correcta! Liberando datos...');
-            } else {
-                alert('🤖 Orion dice: ¡Error! Esa no es la respuesta. Pista: Está en tu pecho y late por mí.');
+            const input = document.getElementById('rpg-input').value.toLowerCase().trim();
+            const texto = document.getElementById('orion-text');
+            const cajaInput = document.getElementById('rpg-input');
+            const inventario = document.getElementById('inventory-box');
+
+            if (etapa === 0) {
+                if (input === 'si' || input === 'sí') {
+                    texto.innerHTML = "¡Excelente! Para armar la carta, debes reunir 3 pistas. <br><br><b>Pista 1:</b> No tiene ojos pero llora, no tiene alas pero vuela... y late muy fuerte cuando te veo. ¿Qué es?";
+                    etapa = 1;
+                    cajaInput.value = "";
+                } else {
+                    texto.innerHTML = "Orion confundido... Por favor, escribe 'si' para empezar la misión.";
+                }
+            } 
+            else if (etapa === 1) {
+                if (input.includes('corazon') || input.includes('corazón') || input.includes('amor')) {
+                    inventario.style.display = 'block';
+                    document.getElementById('bin-1').style.opacity = '1';
+                    texto.innerHTML = "¡Bip Bop! ¡Correcto! Has desbloqueado la Parte 1. <br><br><b>Pista 2:</b> Es tu color favorito, suave y dulce como el algodón de azúcar. ¿Qué color es?";
+                    etapa = 2;
+                    cajaInput.value = "";
+                } else {
+                    texto.innerHTML = "¡Beeeep! Error de sistema. Piensa bien: está en tu pecho...";
+                }
+            }
+            else if (etapa === 2) {
+                if (input.includes('rosa') || input.includes('rosado')) {
+                    document.getElementById('bin-2').style.opacity = '1';
+                    texto.innerHTML = "¡Datos procesados! Parte 2 desbloqueada. <br><br><b>Pista Final:</b> ¿Cuántos meses llevan construyendo esta hermosa historia hoy? (Escribe el número)";
+                    etapa = 3;
+                    cajaInput.value = "";
+                } else {
+                    texto.innerHTML = "¡Beeeep! Incorrecto. Es un color pastel que te encanta...";
+                }
+            }
+            else if (etapa === 3) {
+                if (input === '1' || input === 'un' || input === 'uno') {
+                    document.getElementById('bin-3').style.opacity = '1';
+                    texto.innerHTML = "¡MISIÓN COMPLETADA, JULIETH! 🎉 Has reunido todo el código. Únelo y cópialo tal cual en un traductor binario para leer tu carta sorpresa.";
+                    cajaInput.style.display = 'none';
+                    document.getElementById('rpg-button').style.display = 'none';
+                } else {
+                    texto.innerHTML = "¡Beeeep! Error. Hoy están de aniversario de un número especial...";
+                }
             }
         }
     </script>
